@@ -1,0 +1,17 @@
+{
+  "name": "cbpp_figures",
+  "version": "0.8.0",
+  "description": "Wrapper for CBPP graphics",
+  "main": "cbpp_figures.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Kasprak",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^1.12.4"
+  },
+  "devDependencies": {
+    "browserify-css": "^0.14.0"
+  }
+}

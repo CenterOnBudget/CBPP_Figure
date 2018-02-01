@@ -1,0 +1,89 @@
+ div.cbppFigure {
+    max-width:940px;
+    font-family:"proxima-nova","Montserrat", sans-serif;
+    h2.title {
+        margin-top:0.5em;
+        line-height:24px;
+        font-size:24px;
+        font-family:"proxima-nova","Montserrat", sans-serif;
+        color:#000;
+    }
+
+    div.borderWrapper {
+        border-top:1px solid #888;
+        border-bottom:1px solid #888;
+    }
+
+    h3.subtitle {
+        font-family:"proxima-nova-condensed","Pragati Narrow", sans-serif;
+        font-size:19px;
+        font-weight:400;
+        color:#000;
+    }
+
+    div.content {
+        width:100% !important;
+        position:relative;
+    }
+
+    div.content div.cellWrap {
+        display:block;
+        float:left !important;
+        padding:0;
+        margin:0;
+        position:relative;
+    }
+
+    div.content div.cellWrap.firstOfRow {
+        clear:left;
+    }
+
+    div.content div.cellWrap.fixed div.grid {
+        position:absolute;
+        top:0;left:0;bottom:0;right:0;
+    }
+
+
+    div.content div.grid .gridBox {
+        width:100%;
+        height:100%;
+        text-align:center;
+        border:2px solid #000;
+    }
+
+    div.content div.grid .gridBox .gridLabel {
+        vertical-align:middle;
+    }
+
+    div.notes {
+        font-size:0.8em;
+        color:#888;
+        line-height:110%;
+        clear:both;
+        padding-top:0.5em;
+    }
+
+    div.credit {
+        text-transform:uppercase;
+        color:#888;
+        text-align:right;
+        margin-top:0.4em;
+        font-size:0.9em;
+    }
+
+    a {
+        color:#888;
+        text-decoration:none;
+    }
+
+    div.notes a {
+        color:#0081a4;
+    }
+
+
+    div.credit a:hover,
+    div.notes a:hover {
+        text-decoration:underline;
+    }
+
+}
