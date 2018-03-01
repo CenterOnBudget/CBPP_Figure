@@ -153,7 +153,12 @@ module.exports = function($) {
     CBPP_Figures.Figure.prototype.removeImportantRules = function() {
       function handleRule(obj, ind) {
         try {
-          if (obj.hasOwnProperty("cssRules")) {
+          if (typeof(obj.href)!=="undefined" && obj.href!==null) {
+            if (obj.href.indexOf("cbpp.org")===-1) {
+              return;
+            }
+          }
+          if (typeof(obj.cssRules)!=="undefined") {
             if (obj.cssRules !== null) {
               for (var i = 0, ii = obj.cssRules.length; i<ii; i++) {
                 handleRule(obj.cssRules[i], i);
