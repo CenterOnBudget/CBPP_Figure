@@ -320,7 +320,8 @@ module.exports = function($) {
         borderWrap.append(notes);
         s.append(borderWrap);
         s.append(credit);
-        $(document).find("head").prepend("<style type='text/css'>" + style + "</style>");
+        $(document).find("head").find("style[data-fid='" + this.selector + "']").remove();
+        $(document).find("head").prepend("<style type='text/css' data-fid='" + this.selector + "'>" + style + "</style>");
         this.removeImportantRules();
 
     };
