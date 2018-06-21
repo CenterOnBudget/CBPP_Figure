@@ -96,13 +96,13 @@ module.exports = function($) {
         ready();
     },800);
 
-    CBPP_Figures.ready = function(callback) {
+    /*CBPP_Figures.ready = function(callback) {
         if (CBPP_Figures.ready===true) {
             callback();
         } else {
             CBPP_Figures.whenReady = callback;
         }
-    };
+    };*/
 
     CBPP_Figures.Figure = function(selector, config) {
         if (CBPP_Figures.ready === false) {
