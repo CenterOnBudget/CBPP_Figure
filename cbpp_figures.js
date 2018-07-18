@@ -320,8 +320,9 @@ module.exports = function($) {
         borderWrap.append(notes);
         s.append(borderWrap);
         s.append(credit);
-        $(document).find("head").find("style[data-fid='" + this.selector + "']").remove();
-        $(document).find("head").prepend("<style type='text/css' data-fid='" + this.selector + "'>" + style + "</style>");
+        var fid = this.selector.replace(/[^a-zA-Z0-9\s\:]*/g,"");
+        $(document).find("head").find("style[data-fid='" +fid + "']").remove();
+        $(document).find("head").prepend("<style type='text/css' data-fid='" + fid + "'>" + style + "</style>");
         this.removeImportantRules();
 
     };
