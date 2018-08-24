@@ -303,6 +303,18 @@ module.exports = function($) {
 
         style += "@media (max-width:" + this.breakpoint + "px) {" + this.selector + " .afterBreak {clear:both;width:" + afterWidth*100 + "% !important;}" + this.selector + " .beforeBreak {clear:both;width:"+ beforeWidth*100 + "% !important;}" + this.selector + " .cellWrap.breakVariable{padding-bottom:0;}" + this.selector + " .cellWrap.breakVariable .grid{position:relative;}}";
 
+        
+        function getHTMLText(o) {
+            var fields = ["title","subtitle","notes","credit"];
+            var html;
+            for (var i = 0, ii = fields.length; i<ii; i++) {
+                html = s.find("." + fields[i]).html();
+                if (typeof(html)!=="undefined") {
+                    o[fields[i]] = html;
+                }
+            }
+        }
+        getHTMLText(this);
         title.html(this.title);
         subtitle.html(this.subtitle);
         notes.html(this.notes);
@@ -310,7 +322,6 @@ module.exports = function($) {
             $(notes).wrapInner("<p></p>");
         }
         credit.html(this.credit);
-
         s.empty();
         s.removeClass("cbppFigure");
         s.addClass("cbppFigure");
