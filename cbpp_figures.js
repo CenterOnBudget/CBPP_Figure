@@ -30,7 +30,7 @@ module.exports = function($) {
     CBPP_Figures.ready = false;
 
     /*load dependencies*/
-    require("./cbpp_figures.css");
+    require("./cbpp_figures.scss");
     function ready() {
         if (typekitLoaded) {
             CBPP_Figures.ready = true;
