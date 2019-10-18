@@ -32,6 +32,7 @@ module.exports = function($) {
     /*load dependencies*/
     require("./cbpp_figures.scss");
     function ready() {
+        if (CBPP_Figures.ready) {return;}
         if (typekitLoaded) {
             CBPP_Figures.ready = true;
             if (typeof(CBPP_Figures.whenReady)==="function") {
