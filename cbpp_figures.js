@@ -55,7 +55,8 @@ module.exports = function($) {
             location.hostname === "cbpp-multimedia.org" ||
             location.hostname === "nkaspraknode" ||
             location.hostname === "nkaspraktest" ||
-            location.hostname === "localhost" ) {
+            location.hostname === "localhost" ||
+            location.hostname === "apache" ) {
               $.getScript("//use.typekit.net/bwe8bid.js", function() {
                   try{Typekit.load({
                       active: function() {typekitLoaded = true; clearTimeout(tkb); ready();}
