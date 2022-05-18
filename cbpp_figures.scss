@@ -1,7 +1,10 @@
- div.cbppFigure {
+div.cbppFigure {
     max-width:940px;
     font-family:"proxima-nova","Montserrat", sans-serif;
     page-break-inside: avoid;
+    .caption_area {
+        position:relative;
+    }
     h2.title {
         margin-top:0.5em;
         line-height:24px;
@@ -56,6 +59,12 @@
         vertical-align:middle;
     }
 
+    div.figure_number {
+        line-height: 25pt;
+        font-size: 12pt;
+        text-transform: uppercase;
+    }
+
     div.notes {
         font-size:0.8em;
         color:#888;
@@ -85,6 +94,22 @@
     div.credit a:hover,
     div.notes a:hover {
         text-decoration:underline;
+    }
+
+    .share-icons .visually-hidden {
+        display:none;
+    }
+    .share-icons {
+        position:absolute;
+        top:2px;
+        right:0;
+        a {
+            margin-left:15pt;
+            color:#aac8df;
+            &:hover {
+                color:#0076bf;
+            }
+        }
     }
 
 }

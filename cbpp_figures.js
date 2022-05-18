@@ -48,6 +48,15 @@ module.exports = function($) {
     if (TypekitRequested === false) {
         TypekitRequested = true;
 
+        if (location.hostname !== "www.cbpp.org") {
+            var fa = $(document.createElement("link"))
+                .attr("rel","stylesheet")
+                .attr("href","https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+                //.attr("integrity","sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM")
+                .attr("crossorigin","anonymous");
+            $("head").append(fa);
+        }
+
         if (location.hostname === "www.cbpp.org" ||
             location.hostname === "cbpp.org" ||
             location.hostname === "apps.cbpp.org" ||
@@ -117,6 +126,8 @@ module.exports = function($) {
     };
     CBPP_Figures.Figure.prototype = {
         title : "Title",
+        figure_number: "",
+        share: false,
     	subtitle : "Subtitle",
     	notes : "<p>Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
     	credit : "Center on Budget and Policy Priorities | <a href=\"http://www.cbpp.org\">cbpp.org</a>",
@@ -188,7 +199,10 @@ module.exports = function($) {
             credit = $("<div class=\"credit\"></div>"),
             borderWrap = $("<div class=\"borderWrapper\"></div>"),
             content = $("<div class=\"content\"></div>"),
+            figure_number = $("<div class=\"figure_number\"></div>"),
+            caption_area = $("<div class=\"caption_area\"></div>"),
             style = "",
+            share = "",
             cellWrap,
             cellWidth,
             cellPadding,
@@ -198,6 +212,9 @@ module.exports = function($) {
             beforeBreak,
             afterBreak,
             f = this;
+
+        
+
         if (typeof(this.responsiveBreak)==='undefined') {
             this.responsiveBreak = Math.max(0,this.columns.length - 1);
         }
@@ -307,7 +324,7 @@ module.exports = function($) {
 
         
         function getHTMLText(o) {
-            var fields = ["title","subtitle","notes","credit"];
+            var fields = ["title","subtitle","notes","credit","figure_number"];
             var html;
             for (var i = 0, ii = fields.length; i<ii; i++) {
                 html = s.find("." + fields[i]).html();
@@ -315,11 +332,35 @@ module.exports = function($) {
                     o[fields[i]] = html;
                 }
             }
+            console.log(o);
         }
         getHTMLText(this);
+        if (s.attr("id") && this.share) {
+            var page_url = encodeURIComponent(window.location.href + "#" + s.attr("id"));
+            var url_title = encodeURIComponent(this.title);
+            share = $(`<div class='share-icons'>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=` + page_url + `"
+                    target="_blank"
+                    title = "` + url_title + `">
+                    <span class="visually-hidden">Share Chart on Facebook</span>
+                    <i class="fa fa-facebook-f">
+                    </i>
+                </a>
+            
+                <a href="https://twitter.com/share?url=`+page_url+`&text=`+url_title+`"
+                    class="twitter-share-button icon-twitter"
+                    target="_blank"
+                    data-text = "` + url_title + `">
+                    <span class="visually-hidden">Share Chart on Twitter</span> 
+                    <i class="fa fa-twitter">
+                    </i>
+                </a>
+            </div>`)
+        }
         title.html(this.title);
         subtitle.html(this.subtitle);
         notes.html(this.notes);
+        figure_number.html(this.figure_number);
         if ($(notes).children("p").length === 0) {
             $(notes).wrapInner("<p></p>");
         }
@@ -331,6 +372,9 @@ module.exports = function($) {
         borderWrap.append(subtitle);
         borderWrap.append(content);
         borderWrap.append(notes);
+        s.append(caption_area);
+        caption_area.append(figure_number);
+        caption_area.append(share);
         s.append(borderWrap);
         s.append(credit);
         var fid = this.selector.replace(/[^a-zA-Z0-9\s\:]*/g,"");
