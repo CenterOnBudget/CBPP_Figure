@@ -332,7 +332,6 @@ module.exports = function($) {
                     o[fields[i]] = html;
                 }
             }
-            console.log(o);
         }
         getHTMLText(this);
         if (s.attr("id") && this.share) {
