@@ -12,7 +12,9 @@ div.cbppFigure {
         font-family:"proxima-nova","Montserrat", sans-serif;
         color:#000;
     }
-
+    div.figure_number {
+        min-height:33.33px;
+    }
     div.borderWrapper {
         border-top:1px solid #888;
         border-bottom:1px solid #888;

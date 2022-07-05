@@ -324,12 +324,15 @@ module.exports = function($) {
 
         
         function getHTMLText(o) {
-            var fields = ["title","subtitle","notes","credit","figure_number"];
+            var fields = ["title","subtitle","notes","credit","figure_number","share"];
             var html;
             for (var i = 0, ii = fields.length; i<ii; i++) {
                 html = s.find("." + fields[i]).html();
                 if (typeof(html)!=="undefined") {
                     o[fields[i]] = html;
+                }
+                if (s[0].hasAttribute("data-" + fields[i])) {
+                    o[fields[i]] = s.attr("data-" + fields[i]);
                 }
             }
         }
